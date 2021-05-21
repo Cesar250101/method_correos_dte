@@ -27,11 +27,13 @@ class ModuleName(models.Model):
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
         uid = common.authenticate(db, username, password, {})
-        dte_email=models.execute_kw(db, uid, password,
-            'method_correos_dte.correos_dte', 'search_read',
-            [[['rut', '=', self.document_number.replace('.','')]]],
-            [])
-        if dte_email:
-            for i in dte_email:
-                self.dte_email=i['email_dte']
+        rut_partner=self.sii_document_number
+        if rut_partner:
+            dte_email=models.execute_kw(db, uid, password,
+                'method_correos_dte.correos_dte', 'search_read',
+                [[['rut', '=', rut_partner.replace('.','')]]],
+                [])
+            if dte_email:
+                for i in dte_email:
+                    self.dte_email=i['email_dte']
 
