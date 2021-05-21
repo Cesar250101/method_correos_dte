@@ -1,0 +1,69 @@
+<odoo>
+
+    <record model="ir.actions.act_window" id="method_correos_dte.action_window_importar">
+      <field name="name">Importar Correos de Intercambio del SII</field>
+      <field name="res_model">method_correos_dte.correos_dte</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem
+        name="Importar Archivo de Email SII"
+        action="method_correos_dte.action_window_importar"
+        id="menu_action_correos_dte_importar"
+        parent="l10n_cl_fe.menu_sii_config"
+    />
+
+        <record id="obtiene_dte_email" model="ir.ui.view">
+            <field name="name">obtiene.dte.email</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="l10n_cl_fe.view_partner_activity_inherit_form"/>
+            <field name="arch" type="xml">
+                <!--<field name="dte_email" position="after">
+                    <button name="obtener_dte_email" type="object" string="Obtener eMail" class="fas fa-at"/>
+                </field>-->
+                <xpath expr="//field[@name='dte_email']" position="replace">
+                                <label for="dte_email"/>
+                                <div class="o_row">
+                                    <field name="dte_email"/>
+                                    <button name="obtener_dte_email" type="object" string="Obtener eMail" class="btn-sm btn-link mb4 fa fa-envelope-o"/>
+                                </div>
+                </xpath>                
+            </field>
+        </record>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="method_correos_dte.tree_view">
+      <field name="name">Correos DTE Intercambio</field>
+      <field name="model">method_correos_dte.correos_dte</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="rut"/>
+          <field name="nro_resolucion"/>
+          <field name="fecha_resolucion"/>
+          <field name="email_dte"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+
+
+
+    <record model="ir.actions.act_window" id="method_correos_dte.action_window">
+      <field name="name">method.correos.dte.action.window</field>
+      <field name="res_model">method_correos_dte.correos_dte</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+
+
+    <menuitem
+        name="Email DTE"
+        action="method_correos_dte.action_window"
+        id="menu_action_correos_dte"
+        parent="l10n_cl_fe.menu_sii_config"
+    />
+
+</odoo>
