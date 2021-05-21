@@ -27,7 +27,7 @@ class ModuleName(models.Model):
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
         uid = common.authenticate(db, username, password, {})
-        rut_partner=self.sii_document_number
+        rut_partner=self.document_number
         if rut_partner:
             dte_email=models.execute_kw(db, uid, password,
                 'method_correos_dte.correos_dte', 'search_read',
