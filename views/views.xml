@@ -27,7 +27,12 @@
                                     <field name="dte_email"/>
                                     <button name="obtener_dte_email" type="object" string="Obtener eMail" class="btn-sm btn-link mb4 fa fa-envelope-o"/>
                                 </div>
-                </xpath>                
+                </xpath>     
+                <xpath expr="//field[@name='acteco_ids']" position="after">
+                  <a href="https://zeus.sii.cl/cvc/stc/stc.html" target="_blank">Consultar Giro en SII</a>
+                </xpath>     
+
+                           
             </field>
         </record>
 
