@@ -19,8 +19,8 @@ class ModuleName(models.Model):
 
     @api.one
     def obtener_dte_email(self):
-        url = 'http://localhost:8069'
-        db = 'odoo12'
+        url = 'http://170.239.87.131:8069'
+        db = 'method'
         username = 'cesar@method.cl'
         password = '2010'
         
